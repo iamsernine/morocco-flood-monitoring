@@ -13,12 +13,18 @@
  * Debugging:
  * - Vérifier que le serveur dev démarre sur le port 3000
  * - Vérifier que le proxy API fonctionne vers localhost:5000
+ * - Vérifier que l'alias @ fonctionne pour les imports
  * ============================================================================
  */
 
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
+import { fileURLToPath } from 'url'
+
+// Pour Vite 6, utiliser fileURLToPath pour __dirname
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 // https://vitejs.dev/config/
 export default defineConfig({
