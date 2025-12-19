@@ -200,6 +200,24 @@ def get_db_session():
     return SessionLocal()
 
 
+def get_db_connection():
+    """
+    Retourne une connexion SQLite brute (pour scripts simples).
+    
+    Usage:
+        import sqlite3
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM cities")
+        conn.close()
+    
+    Returns:
+        sqlite3.Connection
+    """
+    import sqlite3
+    return sqlite3.connect(DB_PATH)
+
+
 def drop_all_tables():
     """
     DANGER: Supprime toutes les tables de la base de données.
