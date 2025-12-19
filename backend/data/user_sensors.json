@@ -1,0 +1,236 @@
+[
+    {
+        "sensor_id": "MAR_1",
+        "city": "Marrakech",
+        "lat": 22.15883,
+        "lon": -9.24671
+    },
+    {
+        "sensor_id": "CAS_1",
+        "city": "Casablanca",
+        "lat": 24.03407,
+        "lon": -9.9135
+    },
+    {
+        "sensor_id": "CAS_2",
+        "city": "Casablanca",
+        "lat": 24.32806,
+        "lon": -9.55004
+    },
+    {
+        "sensor_id": "CAS_3",
+        "city": "Casablanca",
+        "lat": 27.58938,
+        "lon": -5.80418
+    },
+    {
+        "sensor_id": "RAB_1",
+        "city": "Rabat",
+        "lat": 28.40666,
+        "lon": -9.06336
+    },
+    {
+        "sensor_id": "RAB_2",
+        "city": "Rabat",
+        "lat": 29.06758,
+        "lon": -2.57841
+    },
+    {
+        "sensor_id": "RAB_3",
+        "city": "Rabat",
+        "lat": 20.69811,
+        "lon": -5.44556
+    },
+    {
+        "sensor_id": "RAB_4",
+        "city": "Rabat",
+        "lat": 27.14611,
+        "lon": -6.53347
+    },
+    {
+        "sensor_id": "TAN_1",
+        "city": "Tangier",
+        "lat": 29.32753,
+        "lon": -7.53568
+    },
+    {
+        "sensor_id": "TAN_2",
+        "city": "Tangier",
+        "lat": 21.82709,
+        "lon": -9.89306
+    },
+    {
+        "sensor_id": "TAN_3",
+        "city": "Tangier",
+        "lat": 23.84417,
+        "lon": -2.91498
+    },
+    {
+        "sensor_id": "TAN_4",
+        "city": "Tangier",
+        "lat": 21.34927,
+        "lon": -5.10137
+    },
+    {
+        "sensor_id": "MAR_2",
+        "city": "Marrakech",
+        "lat": 20.26887,
+        "lon": -6.88764
+    },
+    {
+        "sensor_id": "AGA_1",
+        "city": "Agadir",
+        "lat": 23.12473,
+        "lon": -7.97929
+    },
+    {
+        "sensor_id": "AGA_2",
+        "city": "Agadir",
+        "lat": 24.70248,
+        "lon": -4.56808
+    },
+    {
+        "sensor_id": "AGA_3",
+        "city": "Agadir",
+        "lat": 24.08402,
+        "lon": -2.9555
+    },
+    {
+        "sensor_id": "SAF_1",
+        "city": "Safi",
+        "lat": 29.69198,
+        "lon": -5.49506
+    },
+    {
+        "sensor_id": "SAF_2",
+        "city": "Safi",
+        "lat": 20.37912,
+        "lon": -3.8754
+    },
+    {
+        "sensor_id": "SAF_3",
+        "city": "Safi",
+        "lat": 28.6977,
+        "lon": -4.80117
+    },
+    {
+        "sensor_id": "SAF_4",
+        "city": "Safi",
+        "lat": 20.26645,
+        "lon": -4.31499
+    },
+    {
+        "sensor_id": "RAB_5",
+        "city": "Rabat",
+        "lat": 23.16104,
+        "lon": -7.85616
+    },
+    {
+        "sensor_id": "MAR_3",
+        "city": "Marrakech",
+        "lat": 28.78422,
+        "lon": -0.1373
+    },
+    {
+        "sensor_id": "AGA_4",
+        "city": "Agadir",
+        "lat": 22.49496,
+        "lon": -5.01782
+    },
+    {
+        "sensor_id": "AGA_5",
+        "city": "Agadir",
+        "lat": 27.57538,
+        "lon": -2.38549
+    },
+    {
+        "sensor_id": "AGA_6",
+        "city": "Agadir",
+        "lat": 27.86436,
+        "lon": -5.27279
+    },
+    {
+        "sensor_id": "AGA_7",
+        "city": "Agadir",
+        "lat": 24.72382,
+        "lon": -1.31023
+    },
+    {
+        "sensor_id": "CAS_4",
+        "city": "Casablanca",
+        "lat": 23.70126,
+        "lon": -8.477
+    },
+    {
+        "sensor_id": "CAS_5",
+        "city": "Casablanca",
+        "lat": 25.17422,
+        "lon": -7.39511
+    },
+    {
+        "sensor_id": "CAS_6",
+        "city": "Casablanca",
+        "lat": 29.53597,
+        "lon": -4.32133
+    },
+    {
+        "sensor_id": "CAS_7",
+        "city": "Casablanca",
+        "lat": 25.29539,
+        "lon": -2.01551
+    },
+    {
+        "sensor_id": "CAS_8",
+        "city": "Casablanca",
+        "lat": 24.57179,
+        "lon": -8.55722
+    },
+    {
+        "sensor_id": "CAS_9",
+        "city": "Casablanca",
+        "lat": 27.07766,
+        "lon": -2.71756
+    },
+    {
+        "sensor_id": "CAS_10",
+        "city": "Casablanca",
+        "lat": 28.6724,
+        "lon": -4.21421
+    },
+    {
+        "sensor_id": "TAN_5",
+        "city": "Tangier",
+        "lat": 21.96726,
+        "lon": -2.84362
+    },
+    {
+        "sensor_id": "TAN_6",
+        "city": "Tangier",
+        "lat": 20.20323,
+        "lon": -2.06917
+    },
+    {
+        "sensor_id": "TAN_7",
+        "city": "Tangier",
+        "lat": 20.69189,
+        "lon": -4.0141
+    },
+    {
+        "sensor_id": "TAN_8",
+        "city": "Tangier",
+        "lat": 23.79868,
+        "lon": -9.60449
+    },
+    {
+        "sensor_id": "TAN_9",
+        "city": "Tangier",
+        "lat": 27.72056,
+        "lon": -5.2462
+    },
+    {
+        "sensor_id": "TAN_10",
+        "city": "Tangier",
+        "lat": 20.63863,
+        "lon": -3.41658
+    }
+]
