@@ -394,6 +394,136 @@ def create_app() -> Flask:
                 'error': str(e)
             }), 500
     
+    @app.route('/api/sensors/import', methods=['POST'])
+    def import_sensors_json():
+        """
+        Importe des villes et capteurs depuis JSON.
+        
+        Body:
+            {
+                "cities": [
+                    {
+                        "name": "Casablanca",
+                        "latitude": 33.5731,
+                        "longitude": -7.5898,
+                        "description": "...",
+                        "sensors": [
+                            {
+                                "sensor_id": "CAS_1",
+                                "latitude": 33.5731,
+                                "longitude": -7.5898,
+                                "description": "..."
+                            }
+                        ]
+                    }
+                ],
+                "replace": false
+            }
+        
+        Returns:
+            JSON avec nombre de villes/capteurs importés
+        """
+        try:
+            data = request.get_json()
+            
+            if 'cities' not in data:
+                return jsonify({
+                    'success': False,
+                    'error': 'Missing cities field'
+                }), 400
+            
+            cities = data['cities']
+            replace = data.get('replace', False)
+            
+            cities_count = 0
+            sensors_count = 0
+            errors = []
+            
+            for city_data in cities:
+                try:
+                    # Vérifier les champs requis
+                    required = ['name', 'latitude', 'longitude']
+                    if not all(field in city_data for field in required):
+                        errors.append(f"Ville invalide: champs manquants")
+                        continue
+                    
+                    city_name = city_data['name']
+                    
+                    # Vérifier si la ville existe
+                    existing_city = sensor_service.get_city(city_name)
+                    if existing_city and not replace:
+                        errors.append(f"Ville '{city_name}' existe déjà")
+                        continue
+                    
+                    # Créer la ville
+                    city = sensor_service.create_city(
+                        name=city_name,
+                        latitude=city_data['latitude'],
+                        longitude=city_data['longitude'],
+                        description=city_data.get('description', '')
+                    )
+                    
+                    if city:
+                        cities_count += 1
+                        
+                        # Importer les capteurs
+                        for sensor_data in city_data.get('sensors', []):
+                            try:
+                                required_sensor = ['sensor_id', 'latitude', 'longitude']
+                                if not all(field in sensor_data for field in required_sensor):
+                                    errors.append(f"Capteur invalide dans {city_name}")
+                                    continue
+                                
+                                sensor_id = sensor_data['sensor_id']
+                                
+                                # Vérifier si le capteur existe
+                                existing_sensor = sensor_service.get_sensor(sensor_id)
+                                if existing_sensor and not replace:
+                                    errors.append(f"Capteur '{sensor_id}' existe déjà")
+                                    continue
+                                
+                                # Créer le capteur
+                                sensor = sensor_service.create_sensor(
+                                    sensor_id=sensor_id,
+                                    city_name=city_name,
+                                    latitude=sensor_data['latitude'],
+                                    longitude=sensor_data['longitude'],
+                                    description=sensor_data.get('description', '')
+                                )
+                                
+                                if sensor:
+                                    sensors_count += 1
+                                    
+                                    # S'abonner au capteur dans MQTT
+                                    nonlocal mqtt_client
+                                    if mqtt_client:
+                                        mqtt_client.subscribe_to_sensor(city_name, sensor_id)
+                                else:
+                                    errors.append(f"Échec import capteur {sensor_id}")
+                            
+                            except Exception as e:
+                                errors.append(f"Erreur capteur: {str(e)}")
+                    else:
+                        errors.append(f"Échec import ville {city_name}")
+                
+                except Exception as e:
+                    errors.append(f"Erreur ville: {str(e)}")
+            
+            return jsonify({
+                'success': True,
+                'data': {
+                    'cities_imported': cities_count,
+                    'sensors_imported': sensors_count,
+                    'errors': errors
+                }
+            }), 200
+        
+        except Exception as e:
+            return jsonify({
+                'success': False,
+                'error': str(e)
+            }), 500
+    
     @app.route('/api/sensors/<sensor_id>', methods=['DELETE'])
     def delete_sensor(sensor_id: str):
         """

@@ -1,0 +1,122 @@
+{
+  "cities": [
+    {
+      "name": "Casablanca",
+      "latitude": 33.5731,
+      "longitude": -7.5898,
+      "description": "Plus grande ville du Maroc, zone côtière à risque d'inondation",
+      "sensors": [
+        {
+          "sensor_id": "CAS_1",
+          "latitude": 33.5731,
+          "longitude": -7.5898,
+          "description": "Capteur zone portuaire"
+        },
+        {
+          "sensor_id": "CAS_2",
+          "latitude": 33.5850,
+          "longitude": -7.6100,
+          "description": "Capteur quartier Aïn Diab"
+        },
+        {
+          "sensor_id": "CAS_3",
+          "latitude": 33.5950,
+          "longitude": -7.6200,
+          "description": "Capteur centre-ville"
+        }
+      ]
+    },
+    {
+      "name": "Rabat",
+      "latitude": 34.0209,
+      "longitude": -6.8416,
+      "description": "Capitale du Maroc, proche de l'océan Atlantique",
+      "sensors": [
+        {
+          "sensor_id": "RAB_1",
+          "latitude": 34.0209,
+          "longitude": -6.8416,
+          "description": "Capteur Bouregreg"
+        },
+        {
+          "sensor_id": "RAB_2",
+          "latitude": 34.0300,
+          "longitude": -6.8500,
+          "description": "Capteur Agdal"
+        }
+      ]
+    },
+    {
+      "name": "Marrakech",
+      "latitude": 31.6295,
+      "longitude": -7.9811,
+      "description": "Ville touristique, risques d'inondation saisonniers",
+      "sensors": [
+        {
+          "sensor_id": "MAR_1",
+          "latitude": 31.6295,
+          "longitude": -7.9811,
+          "description": "Capteur Médina"
+        },
+        {
+          "sensor_id": "MAR_2",
+          "latitude": 31.6400,
+          "longitude": -7.9900,
+          "description": "Capteur Guéliz"
+        },
+        {
+          "sensor_id": "MAR_3",
+          "latitude": 31.6500,
+          "longitude": -8.0000,
+          "description": "Capteur Hivernage"
+        }
+      ]
+    },
+    {
+      "name": "Fès",
+      "latitude": 34.0181,
+      "longitude": -5.0078,
+      "description": "Ville historique avec risques d'inondation urbaine",
+      "sensors": [
+        {
+          "sensor_id": "FES_1",
+          "latitude": 34.0181,
+          "longitude": -5.0078,
+          "description": "Capteur Fès el-Bali"
+        },
+        {
+          "sensor_id": "FES_2",
+          "latitude": 34.0300,
+          "longitude": -5.0200,
+          "description": "Capteur Ville Nouvelle"
+        }
+      ]
+    },
+    {
+      "name": "Tanger",
+      "latitude": 35.7595,
+      "longitude": -5.8340,
+      "description": "Ville portuaire du détroit de Gibraltar",
+      "sensors": [
+        {
+          "sensor_id": "TAN_1",
+          "latitude": 35.7595,
+          "longitude": -5.8340,
+          "description": "Capteur port de Tanger"
+        },
+        {
+          "sensor_id": "TAN_2",
+          "latitude": 35.7700,
+          "longitude": -5.8450,
+          "description": "Capteur centre-ville"
+        },
+        {
+          "sensor_id": "TAN_3",
+          "latitude": 35.7800,
+          "longitude": -5.8550,
+          "description": "Capteur zone touristique"
+        }
+      ]
+    }
+  ]
+}

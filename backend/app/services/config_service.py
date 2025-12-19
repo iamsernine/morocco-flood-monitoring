@@ -105,6 +105,25 @@ class ConfigService:
         }
         return descriptions.get(key, '')
     
+    def _clean_value(self, value: Optional[str]) -> Optional[str]:
+        """
+        Nettoie une valeur de configuration en enlevant les guillemets.
+        
+        Args:
+            value: Valeur à nettoyer
+        
+        Returns:
+            Valeur nettoyée
+        """
+        if value is None:
+            return None
+        # Enlever les guillemets simples et doubles au début/fin
+        value = value.strip()
+        if (value.startswith('"') and value.endswith('"')) or \
+           (value.startswith("'") and value.endswith("'")):
+            value = value[1:-1]
+        return value
+    
     def get(self, key: str, default: Optional[str] = None) -> Optional[str]:
         """
         Récupère une valeur de configuration.
@@ -114,13 +133,13 @@ class ConfigService:
             default: Valeur par défaut si la clé n'existe pas
         
         Returns:
-            Valeur de configuration ou default
+            Valeur de configuration ou default (nettoyée)
         """
         session = get_db_session()
         try:
             config = session.query(Config).filter_by(key=key).first()
             if config:
-                return config.value
+                return self._clean_value(config.value)
             return default
         finally:
             session.close()

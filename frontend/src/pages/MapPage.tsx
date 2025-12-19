@@ -8,7 +8,7 @@
  * ============================================================================
  */
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import { Icon } from 'leaflet'
 import { Link } from 'react-router-dom'
@@ -39,7 +39,7 @@ interface RiskSummary {
   }
 }
 
-// Icônes de marqueurs personnalisées
+// Icônes de marqueurs personnalisées (créées une seule fois)
 const createIcon = (color: string) => new Icon({
   iconUrl: `https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-${color}.png`,
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
@@ -49,10 +49,13 @@ const createIcon = (color: string) => new Icon({
   shadowSize: [41, 41]
 })
 
-const greenIcon = createIcon('green')
-const orangeIcon = createIcon('orange')
-const redIcon = createIcon('red')
-const greyIcon = createIcon('grey')
+// Créer les icônes une seule fois (pas à chaque render)
+const ICONS = {
+  green: createIcon('green'),
+  orange: createIcon('orange'),
+  red: createIcon('red'),
+  grey: createIcon('grey')
+}
 
 export default function MapPage() {
   const [sensors, setSensors] = useState<Sensor[]>([])
@@ -96,18 +99,30 @@ export default function MapPage() {
   }
 
   const getSensorIcon = (sensor: Sensor) => {
-    if (!sensor.active) return greyIcon
+    if (!sensor.active) return ICONS.grey
 
     const riskLevel = getSensorRiskLevel(sensor)
     switch (riskLevel) {
       case 'High':
-        return redIcon
+        return ICONS.red
       case 'Medium':
-        return orangeIcon
+        return ICONS.orange
       default:
-        return greenIcon
+        return ICONS.green
     }
   }
+
+  // Mémoriser les marqueurs pour éviter le re-render inutile
+  const markers = useMemo(() => {
+    return sensors.map((sensor) => {
+      const riskLevel = getSensorRiskLevel(sensor)
+      return {
+        sensor,
+        riskLevel,
+        icon: getSensorIcon(sensor)
+      }
+    })
+  }, [sensors, riskSummary])
 
   const getRiskVariant = (riskLevel: string): "success" | "warning" | "danger" => {
     switch (riskLevel) {
@@ -186,14 +201,11 @@ export default function MapPage() {
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
 
-            {sensors.map((sensor) => {
-              const riskLevel = getSensorRiskLevel(sensor)
-
-              return (
+            {markers.map(({ sensor, riskLevel, icon }) => (
                 <Marker
                   key={sensor.sensor_id}
                   position={[sensor.latitude, sensor.longitude]}
-                  icon={getSensorIcon(sensor)}
+                  icon={icon}
                 >
                   <Popup>
                     <div className="min-w-[250px]">
@@ -251,8 +263,7 @@ export default function MapPage() {
                     </div>
                   </Popup>
                 </Marker>
-              )
-            })}
+            ))}
           </MapContainer>
         </div>
       </div>
