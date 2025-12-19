@@ -37,6 +37,7 @@ Debugging:
 """
 
 import paho.mqtt.client as mqtt
+from paho.mqtt.client import CallbackAPIVersion
 import json
 import threading
 import time
@@ -71,8 +72,11 @@ class MQTTClient:
         self.broker_username = mqtt_config['username']
         self.broker_password = mqtt_config['password']
         
-        # Client MQTT
-        self.client = mqtt.Client(client_id="flood_monitoring_receiver")
+        # Client MQTT (utilise la nouvelle API v2)
+        self.client = mqtt.Client(
+            callback_api_version=CallbackAPIVersion.VERSION2,
+            client_id="flood_monitoring_receiver"
+        )
         self.client.on_connect = self._on_connect
         self.client.on_message = self._on_message
         self.client.on_disconnect = self._on_disconnect
@@ -106,12 +110,13 @@ class MQTTClient:
     # CALLBACKS MQTT
     # ========================================================================
     
-    def _on_connect(self, client, userdata, flags, rc):
+    def _on_connect(self, client, userdata, flags, rc, properties=None):
         """
-        Callback appelé lors de la connexion au broker.
+        Callback appelé lors de la connexion au broker (API v2).
         
         Args:
             rc: Code de retour (0 = succès)
+            properties: Propriétés MQTT v5 (optionnel)
         """
         if rc == 0:
             print("✅ Connecté au broker MQTT")
@@ -119,8 +124,8 @@ class MQTTClient:
         else:
             print(f"❌ Échec de connexion au broker MQTT (code: {rc})")
     
-    def _on_disconnect(self, client, userdata, rc):
-        """Callback appelé lors de la déconnexion."""
+    def _on_disconnect(self, client, userdata, flags, rc, properties=None):
+        """Callback appelé lors de la déconnexion (API v2)."""
         if rc != 0:
             print(f"⚠️  Déconnexion inattendue du broker MQTT (code: {rc})")
         else:

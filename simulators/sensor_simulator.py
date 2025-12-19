@@ -30,6 +30,7 @@ Debugging:
 """
 
 import paho.mqtt.client as mqtt
+from paho.mqtt.client import CallbackAPIVersion
 import json
 import time
 import random
@@ -64,8 +65,11 @@ class SensorSimulator:
         self.water_level = random.uniform(20, 60)  # cm
         self.humidity = random.uniform(40, 80)  # %
         
-        # Client MQTT
-        self.client = mqtt.Client(client_id=f"simulator_{sensor_id}")
+        # Client MQTT (utilise la nouvelle API v2)
+        self.client = mqtt.Client(
+            callback_api_version=CallbackAPIVersion.VERSION2,
+            client_id=f"simulator_{sensor_id}"
+        )
         self.client.on_connect = self._on_connect
         self.client.on_disconnect = self._on_disconnect
         
@@ -77,15 +81,15 @@ class SensorSimulator:
         print(f"   Broker: {broker_host}:{broker_port}")
         print(f"   Intervalle: {interval}s")
     
-    def _on_connect(self, client, userdata, flags, rc):
-        """Callback de connexion."""
+    def _on_connect(self, client, userdata, flags, rc, properties=None):
+        """Callback de connexion (API v2)."""
         if rc == 0:
             print(f"✅ Connecté au broker MQTT")
         else:
             print(f"❌ Échec de connexion (code: {rc})")
     
-    def _on_disconnect(self, client, userdata, rc):
-        """Callback de déconnexion."""
+    def _on_disconnect(self, client, userdata, flags, rc, properties=None):
+        """Callback de déconnexion (API v2)."""
         if rc != 0:
             print(f"⚠️  Déconnexion inattendue (code: {rc})")
     
