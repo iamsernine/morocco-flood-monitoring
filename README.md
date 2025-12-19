@@ -6,12 +6,15 @@
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/)
 [![React](https://img.shields.io/badge/React-18-blue)](https://reactjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)](https://www.typescriptlang.org/)
+[![Version](https://img.shields.io/badge/version-1.1.0-green)](https://github.com/iamsernine/morocco-flood-monitoring)
 
 ---
 
 ## 📋 Description
 
 Système de surveillance en temps réel des inondations conçu pour protéger les infrastructures et la population lors de la Coupe du Monde 2030 au Maroc. Le système combine IoT, IA prédictive, et visualisation cartographique pour une gestion proactive des risques d'inondation.
+
+> **Version 1.1.0** : Toutes les dépendances ont été mises à jour vers leurs dernières versions stables (décembre 2024). Voir [CHANGELOG.md](CHANGELOG.md) pour les détails.
 
 ### 🎯 Objectifs
 
@@ -57,21 +60,21 @@ Système de surveillance en temps réel des inondations conçu pour protéger le
 ### Stack technique
 
 **Backend**
-- **Framework** : Flask + FastAPI
+- **Framework** : Flask 3.1 + FastAPI
 - **Base de données** : SQLite (dev) / PostgreSQL (prod)
-- **MQTT** : Paho MQTT Client
-- **ML** : scikit-learn (RandomForest)
-- **IA** : OpenAI API
+- **MQTT** : Paho MQTT Client 2.1
+- **ML** : scikit-learn 1.6 (RandomForest)
+- **IA** : OpenAI API 1.57
 - **API météo** : OpenWeatherMap
 
 **Frontend**
-- **Framework** : React 18 + TypeScript
-- **Bundler** : Vite
-- **Styling** : Tailwind CSS
+- **Framework** : React 18.3 + TypeScript 5.7
+- **Bundler** : Vite 6.0
+- **Styling** : Tailwind CSS 3.4
 - **UI** : shadcn/ui
-- **Routing** : React Router
+- **Routing** : React Router 7.1
 - **Carte** : Leaflet + React-Leaflet
-- **HTTP** : Axios
+- **HTTP** : Axios 1.7
 
 **Infrastructure**
 - **Broker MQTT** : Mosquitto
@@ -125,6 +128,7 @@ python sensor_simulator.py --sensor-id CAS_1 --city Casablanca
 ## 📖 Documentation
 
 - **[QUICKSTART.md](QUICKSTART.md)** : Démarrage rapide en 5 minutes
+- **[CHANGELOG.md](CHANGELOG.md)** : Historique des versions et mises à jour
 - **[docs/INSTALLATION.md](docs/INSTALLATION.md)** : Guide d'installation complet
 - **[docs/USER_GUIDE.md](docs/USER_GUIDE.md)** : Guide d'utilisation détaillé
 - **[backend/scripts/README.md](backend/scripts/README.md)** : Documentation des scripts
@@ -175,6 +179,7 @@ morocco-flood-monitoring/
 │   └── USER_GUIDE.md
 │
 ├── README.md                 # Ce fichier
+├── CHANGELOG.md             # Historique des versions
 └── QUICKSTART.md            # Guide de démarrage rapide
 ```
 
@@ -251,7 +256,7 @@ Voir la documentation complète dans **[docs/USER_GUIDE.md](docs/USER_GUIDE.md)*
 
 ### Algorithme
 
-**RandomForestClassifier** (scikit-learn)
+**RandomForestClassifier** (scikit-learn 1.6)
 
 ### Features
 

@@ -5,48 +5,46 @@
 # du système de surveillance des inondations au Maroc.
 #
 # Installation: pip install -r requirements.txt
+# Mise à jour: Dernières versions stables au 19 décembre 2024
 # ============================================================================
 
 # Web Framework
-Flask==3.0.0
-Flask-CORS==4.0.0
+Flask==3.1.0
+Flask-CORS==5.0.0
 
 # MQTT Client
-paho-mqtt==1.6.1
+paho-mqtt==2.1.0
 
 # Database
-SQLAlchemy==2.0.23
+SQLAlchemy==2.0.36
 
 # Data Processing
-pandas==2.1.4
-pyarrow==14.0.1  # Pour les fichiers Parquet
-numpy==1.26.2
+pandas==2.2.3
+pyarrow==18.1.0  # Pour les fichiers Parquet
+numpy==2.2.0
 
 # Machine Learning
-scikit-learn==1.3.2
-joblib==1.3.2
+scikit-learn==1.6.0
+joblib==1.4.2
 
 # OpenAI API
-openai==1.6.1
+openai==1.57.2
 
 # HTTP Requests (pour OpenWeatherMap)
-requests==2.31.0
-
-# Email
-smtplib  # Inclus dans Python standard library
+requests==2.32.3
 
 # Environment Variables
-python-dotenv==1.0.0
+python-dotenv==1.0.1
 
 # Date/Time
-python-dateutil==2.8.2
+python-dateutil==2.9.0.post0
 
 # Validation
-pydantic==2.5.3
+pydantic==2.10.3
 
 # Testing (optionnel)
-pytest==7.4.3
-pytest-cov==4.1.0
+pytest==8.3.4
+pytest-cov==6.0.0
 
 # Utilities
-schedule==1.2.0  # Pour les tâches planifiées
+schedule==1.2.2  # Pour les tâches planifiées
